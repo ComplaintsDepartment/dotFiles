@@ -18,8 +18,10 @@ command Cs set ignorecase!
 
 " Development helpers, syntax, etc
 set autoindent
+set nowrap
 syntax enable
 set tags=tags;/ " Search for tags recursively up
+
 
 " CScope function stolen from https://github.com/Big-B
 function! LoadCscope()
