@@ -28,6 +28,24 @@ set wildmode=longest:full,full
 set wildignorecase
 set path+=**
 
+" Comment/Uncomment  multiple Python lines at once
+function Compy() range
+    execute a:firstline . "," . a:lastline . 's/^/# /'
+endfunction
+
+function Uncompy() range
+    execute a:firstline . "," . a:lastline . 's/^# \{0,1}//'
+endfunction
+
+" Comment multiple C lines at once
+function Comc() range
+   execute a:firstline . "," . a:lastline . 's/^/\/\/ /'
+endfunction
+   
+function Uncomc() range
+   execute a:firstline . "," . a:lastline . 's/^\/\/ \{0,1}//'
+endfunction
+
 " CScope function stolen from https://github.com/Big-B
 function! LoadCscope()
     let db = findfile("cscope.out", ".;")
