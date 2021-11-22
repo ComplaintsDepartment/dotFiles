@@ -58,6 +58,11 @@ function! FreezeTop()
 endfunction
 nnoremap FT :call FreezeTop()<CR>
 
+function! Columnate()
+    execute "%! column -t -s,"
+endfunction
+nnoremap Col :call Columnate()<CR> 
+
 " CScope function stolen from https://github.com/Big-B
 function! LoadCscope()
     let db = findfile("cscope.out", ".;")
