@@ -1,4 +1,5 @@
 " Set color
+
 colorscheme elflord
 
 " Spaces instead of tabs, tab length
@@ -29,22 +30,33 @@ set wildignorecase
 set path+=**
 
 " Comment/Uncomment  multiple Python lines at once
-function Compy() range
+function! Compy() range
     execute a:firstline . "," . a:lastline . 's/^/# /'
 endfunction
 
-function Uncompy() range
+function! Uncompy() range
     execute a:firstline . "," . a:lastline . 's/^# \{0,1}//'
 endfunction
 
 " Comment multiple C lines at once
-function Comc() range
+function! Comc() range
    execute a:firstline . "," . a:lastline . 's/^/\/\/ /'
 endfunction
    
-function Uncomc() range
+function! Uncomc() range
    execute a:firstline . "," . a:lastline . 's/^\/\/ \{0,1}//'
 endfunction
+
+" Function to freeze the top line of a file
+function! FreezeTop()
+    execute "1spl"
+    set scrollbind
+    execute "normal! gg"
+    execute "wincmd w"
+    set scrollbind
+    set sbo=hor
+endfunction
+nnoremap FT :call FreezeTop()<CR>
 
 " CScope function stolen from https://github.com/Big-B
 function! LoadCscope()
