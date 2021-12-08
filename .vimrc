@@ -1,5 +1,4 @@
 " Set color
-
 colorscheme elflord
 
 " Spaces instead of tabs, tab length
@@ -63,13 +62,16 @@ function! Columnate()
 endfunction
 nnoremap Col :call Columnate()<CR> 
 
-" CScope function stolen from https://github.com/Big-B
+" CScope autocommand to start cscope and find the path to your
+" cscope file from:
+" https://vim.fandom.com/wiki/Autoloading_Cscope_Database
+
 function! LoadCscope()
     let db = findfile("cscope.out", ".;")
     if (!empty(db))
-        let path1 = strpart(db, 0, match(db, "/cscope.out$"))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
         set nocscopeverbose " supress 'duplicate connection' error
-        exe "cs add " . db . " " . path1
+        exe "cs add " . db . " " . path
         set cscopeverbose
     endif
 endfunction
