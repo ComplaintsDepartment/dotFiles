@@ -32,6 +32,11 @@ set wildmode=longest:full,full
 set wildignorecase
 set path+=**
 
+" Enable viewing man pages in vim without going to shell window
+runtime ftplugin/man.vim
+" Set keyword 'K' to uyse ":Man"
+set keywordprg=:Man
+
 " Comment/Uncomment  multiple Python lines at once
 function! Compy() range
     execute a:firstline . "," . a:lastline . 's/^/# /'
